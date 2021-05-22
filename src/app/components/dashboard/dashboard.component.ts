@@ -12,7 +12,7 @@ declare const MediumEditor: any;
 
 export class DashboardComponent implements AfterViewInit, OnInit {
 editor: any;
-  @ViewChild('editable', { static: true }) editable: ElementRef;
+  //@ViewChild('editable', { static: true }) editable: ElementRef;
 
   constructor(
     public authService: AuthService,
@@ -21,8 +21,10 @@ editor: any;
   ) { }
 
 ngAfterViewInit(): void {
-    this.editor = new MediumEditor(this.editable.nativeElement);
-    // this.editor = new MediumEditor(this.editable.nativeElement, {
+
+  this.editor = new MediumEditor('.editable');
+
+    // this.editor = new MediumEditor('.editable', {
     //   activeButtonClass: 'medium-editor-button-active',
     //   allowMultiParagraphSelection: true,
     //   buttonLabels: false,
