@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "pencil-notes": {
+      "hosting": {
+        "angularfirebase-authentication": [
+          "pencil-notes"
+        ]
+      }
+    }
+  }
+}
