@@ -23,6 +23,7 @@ import { environment } from '../environments/environment';
 
 // Auth service
 import { AuthService } from "./shared/services/auth.service";
+import { NotesService } from "./shared/services/notes.service";
 
 
 @NgModule({
@@ -42,7 +43,7 @@ import { AuthService } from "./shared/services/auth.service";
     AngularFirestoreModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, NotesService],
   bootstrap: [AppComponent]
 })
 

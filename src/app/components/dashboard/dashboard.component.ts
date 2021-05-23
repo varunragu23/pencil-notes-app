@@ -1,5 +1,6 @@
 import { Component, AfterViewInit, ViewChild, ElementRef, OnInit, NgZone } from '@angular/core';
 import { AuthService } from "../../shared/services/auth.service";
+import { NotesService } from "../../shared/services/notes.service";
 import { Router } from "@angular/router";
 
 declare const MediumEditor: any;
@@ -12,17 +13,24 @@ declare const MediumEditor: any;
 
 export class DashboardComponent implements AfterViewInit, OnInit {
 editor: any;
+notesService: NotesService;
   //@ViewChild('editable', { static: true }) editable: ElementRef;
 
   constructor(
     public authService: AuthService,
+    public noteService: NotesService,
     public router: Router,
     public ngZone: NgZone
-  ) { }
+  ) { 
+    this.notesService = noteService;
+  }
 
 ngAfterViewInit(): void {
 
+ // document.getElementById('editable').innerText = 'ragu testing';
+
   this.editor = new MediumEditor('.editable');
+
 
     // this.editor = new MediumEditor('.editable', {
     //   activeButtonClass: 'medium-editor-button-active',
