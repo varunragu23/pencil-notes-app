@@ -7,31 +7,30 @@ import { Note } from './note';
   providedIn: 'root'
 })
 export class NotesService {
-  note : Note;
+  note: Note;
 
   constructor(
     public afs: AngularFirestore,   // Inject Firestore service
-    public authService: AuthService  
+    public authService: AuthService
   ) {
-    // var noteRef = this.afs.collection("notes", ref => ref.where('email', '==', authService.userData.email));
+    console.log("emailid" + authService.userData.email);
 
     var noteRef = this.afs.collection("notes").doc(authService.userData.email);
 
-    // this.note.uid = "1";
-    // this.note.email = "dr3463@gmail.com";
-    // this.note.document = "doc content";
-
-    noteRef.get().forEach( doc => {
+    noteRef.get().forEach(doc => {
       if (doc.exists) {
-          console.log("Document data:", doc.data());
-          this.note = doc.data() as Note;
+        console.log("Document data:", doc.data());
+        this.note = doc.data() as Note;
       } else {
-          // doc.data() will be undefined in this case
-          console.log("No such document!");
+        console.log("No such document!");
+        this.note.id = authService.userData.email;
+        this.note.document = "<Enter Your Notes Here>";
       }
-  }).catch((error) => {
+      document.getElementById('editable').innerText = this.note.document;
+
+    }).catch((error) => {
       console.log("Error getting document:", error);
-  });
+    });
 
   }
 
