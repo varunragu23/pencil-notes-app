@@ -26,7 +26,7 @@ export class NotesService {
         this.note.id = authService.userData.email;
         this.note.document = "<Enter Your Notes Here>";
       }
-      document.getElementById('editable').innerText = this.note.document;
+      //document.getElementById('editable').innerText = this.note.document;
 
     }).catch((error) => {
       console.log("Error getting document:", error);
